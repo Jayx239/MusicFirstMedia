@@ -3,3 +3,13 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+
+block video
+  <video controls>
+  <source src="/media/video?filename=Toaster.mp4" type="video/mp4">
+  </video>
+
+block audio
+  <audio controls>
+  <source src="/media/audio?filename=Meek Mill - Ooh Kill Em [Official Video].mp3">
+  </audio>
