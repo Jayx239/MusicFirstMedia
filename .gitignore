@@ -113,3 +113,6 @@ fabric.properties
 
 # Editor-based Rest Client
 .idea/httpRequests
+
+# mac ignore
+.DS_STORE

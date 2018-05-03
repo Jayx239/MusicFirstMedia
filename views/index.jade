@@ -13,3 +13,20 @@ block audio
   <audio controls>
   <source src="/media/audio?filename=Meek Mill - Ooh Kill Em [Official Video].mp3">
   </audio>
+
+block videoUpload
+  <form method="post" action="/media/video" enctype="multipart/form-data">
+  <input id="videoUpload" type="file" name="videoUpload">
+  <input type="submit">
+  </form>
+block imageUpload
+  <form method="post" action="/media/image" enctype="multipart/form-data">
+  <input id="imageUpload" type="file" name="imageUpload">
+  <input type="submit">
+  </form>
+
+block audioUpload
+  <form method="post" action="/media/audio" enctype="multipart/form-data">
+  <input id="audioUpload" type="file" name="audioUpload">
+  <input type="submit">
+  </form>
