@@ -7,7 +7,7 @@ var formidable = require('formidable');
 var path = require('path');
 
 /* TODO: Put this in a configuration file */
-const contentBaseDirectory = '/../public/MusicFirst/media/';
+const contentBaseDirectory = '/../public/musicfirst/media/';
 
 /* File Streaming */
 router.get('/video/',function(req, res, next){
