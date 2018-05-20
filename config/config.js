@@ -15,4 +15,9 @@ CONFIG.db_password  = process.env.DB_PASSWORD   || 'db-password';
 CONFIG.jwt_encryption  = process.env.JWT_ENCRYPTION || 'jwt_please_change';
 CONFIG.jwt_expiration  = process.env.JWT_EXPIRATION || '10000';
 
+CONFIG.mongo_dialect   = process.env.MONGO_DB_DIALECT || 'mongodb';
+CONFIG.mongo_host   = process.env.MONGO_DB_HOST || 'localhost';
+CONFIG.mongo_port   = process.env.MONGO_DB_PORT || '27017';
+CONFIG.mongo_name   = process.env.MONGO_DB_NAME || 'mongodb';
+CONFIG.mongo_media_collection = process.env.MONGO_DB_MEDIA_COLLECTION || "media";
 module.exports = CONFIG;

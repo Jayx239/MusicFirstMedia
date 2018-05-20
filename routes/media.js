@@ -5,10 +5,11 @@ var router = express.Router();
 var fs = require('fs');
 var formidable = require('formidable');
 var path = require('path');
-var verifyToken = require('../bin/verifytoken');
+var verifyToken = require('../auth/verifytoken');
+var mongoDb = require('../database/mongo');
 
 /* TODO: Put this in a configuration file */
-const contentBaseDirectory = '/../public/musicfirst/media/';
+const contentBaseDirectory = '/../media/';
 
 /* File Streaming */
 router.get('/video/',verifyToken,function(req, res, next){
@@ -143,6 +144,10 @@ router.post('/audio/',function(req, res, next){
         var contentType = files.audioUpload.type; // TODO: filter out invalid file types
         var oldPath = files.audioUpload.path;
         var newPath = path.join(__dirname, contentBaseDirectory, 'audio/', files.audioUpload.name);
+        var contentLength = files.audioUpload.size;
+        var uploader = fields.uploader;
+        var artist = fields.artist;
+        var songName = fields.songName;
 
         fs.rename(oldPath, newPath, function(err) {
             if(err) {
@@ -151,6 +156,17 @@ router.post('/audio/',function(req, res, next){
                 res.end();
             }
             else {
+                var audioRecord = {
+                    uploader: uploader,
+                    artist: artist,
+                    songName: songName,
+                    fileName: files.audioUpload.name,
+                    type: contentType,
+                    contentLength: contentLength,
+                    path: newPath
+                };
+
+                mongoDb.insertIntoCollection("audio",audioRecord);
                 res.write('success');
                 res.end();
             }

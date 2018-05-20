@@ -12,6 +12,7 @@ var mediaRouter = require('./routes/media');
 var authController = require('./routes/auth');
 
 var app = express();
+var mongoDb = require('./database/mongo');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

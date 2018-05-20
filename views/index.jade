@@ -21,12 +21,16 @@ block videoUpload
   </form>
 block imageUpload
   <form method="post" action="/media/image" enctype="multipart/form-data">
-  <input id="imageUpload" type="file" name="imageUpload">
+  <input id="imageUpload" type="file" name="videoUpload">
   <input type="submit">
   </form>
 
 block audioUpload
+  <label>Audio</label>
   <form method="post" action="/media/audio" enctype="multipart/form-data">
+  <input name="uploader" type="text">
+  <input name="artist" type="text">
+  <input name="songName" type="text">
   <input id="audioUpload" type="file" name="audioUpload">
   <input type="submit">
   </form>
