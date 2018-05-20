@@ -5,12 +5,13 @@ var router = express.Router();
 var fs = require('fs');
 var formidable = require('formidable');
 var path = require('path');
+var verifyToken = require('../bin/verifytoken');
 
 /* TODO: Put this in a configuration file */
 const contentBaseDirectory = '/../public/musicfirst/media/';
 
 /* File Streaming */
-router.get('/video/',function(req, res, next){
+router.get('/video/',verifyToken,function(req, res, next){
     var fileName = req.query.filename;
     var file = __dirname + contentBaseDirectory + "video/" + fileName;
     fs.exists(file, function(exists) {
@@ -26,7 +27,7 @@ router.get('/video/',function(req, res, next){
     });
 });
 
-router.get('/image/',function(req, res, next){
+router.get('/image/',verifyToken,function(req, res, next){
     var fileName = req.query.filename;
     var file = __dirname + contentBaseDirectory + "image/" + fileName;
     fs.exists(file, function(exists) {
@@ -42,7 +43,7 @@ router.get('/image/',function(req, res, next){
     });
 });
 
-router.get('/audio/',function(req, res, next){
+router.get('/audio/',verifyToken,function(req, res, next){
     var fileName = req.query.filename;
     var file = __dirname + contentBaseDirectory + "audio/" + fileName;
     fs.exists(file, function(exists) {
